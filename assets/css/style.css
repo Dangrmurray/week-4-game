@@ -1,0 +1,36 @@
+h1{
+	color: blue;
+	background-color: teal;
+	width: 500px;
+	height: 60px;
+	text-align: center;
+}
+
+#wrapper{
+	color: green;
+	background-color: gold;
+	width: 500px;
+	text-align: center;
+}
+
+#randNum{
+	background-color: gold;
+	height: 100px;
+	width: 100px;
+
+
+}
+
+body{
+	background-image: url(https://www.postojnska-jama.eu/assets/Za-pustolovce/Pivka-in-Crna-jama/_resampled/SetWidth1280-dozivjajski-ogled-2.JPG);
+}
+
+#winLoss{
+	background-color: gold;
+	width: 300px;
+
+}
+
+#totScore{
+	background-color: white;
+}

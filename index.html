@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Crystal Game</title>
+
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+	<!-- <script type="text/javascript" src="assets/javascript/game.js"></script> -->
+
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	
+
+
+</head>
+<body>
+
+<header><h1>Crystal Collector</h1></header>
+
+
+<div id="wrapper">
+	<p>You will be given a random number at the start of the game.</p>
+
+	<p>There are four crystals below. By clicking on a crystal you will add a specific amount of points to your total score.</p>
+
+	<p>You win the game by matching your total score to the random number, you loose the game if your total score goes above the random number.</p>
+
+	<p>The value of each crystal is hidden from you until you click it.</p>
+
+	<p>Each time the game starts the game will change the value of each crystal</p>
+
+	<p>Good Luck!</p>
+
+</div>
+
+
+<h1>Number to Guess:<span id="number-to-guess"></span></h1>
+
+<div id="winLoss">
+	<h3 id='wins'>Wins: </h3>
+	<h3 id='losses'>Losses: </h3>
+	<h3 id='youWL'></h3>
+	
+</div>
+
+
+<div id="crystals">
+
+    <!-- We gave our crystal image the class ".crystal-image" to apply the resize-->
+    <!-- <img class="crystal-image1" src="assets/images/images.png" alt="crystal1"> -->
+    <!-- <img class="crystal-image2" src="assets/images/images-1.png" alt="crystal2"> -->
+    <!-- <img class="crystal-image3" src="assets/images/images-2.png" alt="crystal3"> -->
+    <!-- <img class="crystal-image4" src="assets/images/images-3.png" alt="crystal4"> -->
+
+
+  </div>
+
+  <div><h3 id='totScore'>Your Total Score: </h3></div>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script type="text/javascript">
+var wins = 0;
+var losses = 0;
+
+var targetNumber = "";
+var targetNumber = Math.floor(Math.random() * 50) + 17;
+
+
+$("#number-to-guess").text(targetNumber);
+ 
+  var counter = 0;
+
+  var numberOptions =[10, 5, 3, 7];
+
+  for (var i = 0; i <numberOptions.length; i++){
+
+  	var imageCrystal = $("<img>");
+
+  	imageCrystal.addClass("crystal-image");
+
+  	imageCrystal.attr("src", "assets/images/images.png");
+
+  	imageCrystal.attr("data-crystalvalue", numberOptions[i]);
+
+  	$("#crystals").append(imageCrystal);
+
+  }
+
+  // var increment =numberOptions[Math.round(Math.random())];
+
+  $(".crystal-image").on("click", function() {
+  	
+  	var crystalValue = ($(this).attr("data-crystalvalue"));
+  	crystalValue = parseInt(crystalValue);
+
+
+
+
+  	counter += crystalValue;
+
+
+
+    $("#totScore").html("Your new score is: " + counter);
+
+
+    if (counter === targetNumber) {
+	$("#youWL").html("<h2>You Win!</h2>")
+	wins++
+
+    }
+
+    else if (counter >= targetNumber) {
+
+	$("#youWL").html("<h2>You Lose :( </h2>")
+	losses++
+	
+
+    }
+
+    function resetGame(){
+    	counter = 0;
+    	targetNumber = Math.floor(Math.random() * 50)
+    }
+
+
+
+  
+	document.getElementById('wins').innerHTML = "Wins: " + wins;
+    document.getElementById('losses').innerHTML = "Losses: " + losses;
+
+  });
+
+  </script>
+
+
+
+
+
+</body>
+</html>
